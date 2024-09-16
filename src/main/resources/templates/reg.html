@@ -1,0 +1,28 @@
+<script>
+function test(){
+	console.log("debug");
+	/*
+	var input = document.querySelector('input[type="file"]')
+
+	var data = new FormData()
+	data.append('file', input.files[0])
+	data.append('user', 'hubot')
+	
+	console.log(data);
+	*/
+	
+}
+
+</script>
+<h1>Brad Big Company</h1>
+<hr />
+Register
+<form action="/user/reg" method="post" enctype="multipart/form-data">
+	Account: <input name="account" /><br />
+	Password: <input name="passwd" /><br />
+	Name: <input name="name" /><br />
+	Icon: <input type="file" name="icon" /><br />
+	<input type="submit" value="register" />
+</form>
+
+	

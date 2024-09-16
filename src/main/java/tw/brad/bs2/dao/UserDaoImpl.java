@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Component;
 
+import tw.brad.bs2.model.Hotel;
 import tw.brad.bs2.model.User;
 
 @Component
@@ -74,8 +75,17 @@ public class UserDaoImpl implements UserDao{
 
 	@Override
 	public User getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "SELECT id,account,passwd,name,icon FROM user WHERE id = :id";
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		
+		List<User> list = namedParameterJdbcTemplate.query(sql, map, new UserRowMapper());
+		if (list.size() > 0) {
+			return list.get(0);
+		}else {
+			return null;
+		}
 	}
 
 	@Override
